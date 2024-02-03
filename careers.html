@@ -53,9 +53,9 @@
           <div class="col-lg-4">
             <nav class="site-navigation text-right ml-auto " role="navigation">
               <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="Pricing.html" class="nav-link">Pricing</a></li>
-                <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li class="active"><a href="careers.html" class="nav-link">Careers</a></li>
               </ul>
             </nav>
           </div>
@@ -84,17 +84,55 @@
     </header>
 
     <div class="ftco-blocks-cover-1">
-      <div class="ftco-cover-1 overlay" style="background-image: url('images/hero_2.jpg')">
+      <div class="ftco-cover-1 overlay" style="background-image: url('images/hero_4.jpg')">
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-lg-7 text-center">
-              <h1  data-aos="fade-up" data-aos-delay="0">WELCOME</h1>
+              <h1  data-aos="fade-up" data-aos-delay="0">Our Careers</h1>
               <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn primary-outline-white--hover">Get Started</a></p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+  </main><!-- End #main -->
+  <div class="form" id="my-form">
+    <div>
+      <h1>Enquiry Form</h1>
+      <label for="first-name" id="fn">First Name:</label>
+      <input type="text" id="first-name" name="first-name" required>
+    </div>
+
+    <div>
+      <label for="last-name" id="ln">Last Name:</label>
+      <input type="text" id="last-name" name="last-name" required>
+    </div>
+
+    <div>
+      <label for="phone" id="pn">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+
+    <div>
+      <label for="gender" id="gd">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Please select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="enquiry" id="eq">Enquiry:</label>
+      <textarea id="enquiry" name="enquiry" rows="5" required></textarea>
+    </div>
+   
+    <button onclick="Validate()">Submit</button>
+    <script src="assets/js/Submit.js"></script>
+  </div>
+</div>
+
 
     <footer class="site-footer v2">
       <div class="container">
