@@ -53,8 +53,8 @@
           <div class="col-lg-4">
             <nav class="site-navigation text-right ml-auto " role="navigation">
               <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="pricing.html" class="nav-link">pricing</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="active"><a href="pricing.html" class="nav-link">pricing</a></li>
                 <li><a href="careers.html" class="nav-link">Careers</a></li>
               </ul>
             </nav>
@@ -83,20 +83,95 @@
 
     </header>
 
-    <div class="ftco-blocks-cover-1">
-      <div class="ftco-cover-1 overlay" style="background-image: url('images/hero_2.jpg')">
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-lg-7 text-center">
-              <h1  data-aos="fade-up" data-aos-delay="0">WELCOME</h1>
-              <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn primary-outline-white--hover">Get Started</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<?php
+$uploadDirectory = "uploads/";
+if (!file_exists($uploadDirectory)) {
+    mkdir($uploadDirectory, 0755, true);
+}
 
-    <footer class="site-footer v2">
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+   
+    $servername = "127.0.0.1";
+    $username = "Luca703";
+    $password = "";
+    $dbname = "Luca703";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+ 
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+  
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+
+    // File handling
+	if (is_array($_FILES["resume"])) {
+		$uploadedFiles = $_FILES["resume"]; 
+	
+		$allowedFormats = array("pdf", "docx","doc"); 
+		$successMessage = ""; 
+		$errorMessage = ""; 
+	
+		foreach ($uploadedFiles['name'] as $key => $uploadedFileName) {
+		
+    $fileExtension = pathinfo($uploadedFileName, PATHINFO_EXTENSION); 
+    if (in_array(strtolower($fileExtension), $allowedFormats)) {
+        $uploadedFile = $uploadDirectory . basename($uploadedFileName);
+
+       
+        if (move_uploaded_file($uploadedFiles["tmp_name"][$key], $uploadedFile)) {
+          
+            $sql = "INSERT INTO uploads (name, email, subject, message, resume_path) VALUES ('$name', '$email', '$subject', '$message', '$uploadedFile')";
+
+            if ($conn->query($sql) !== TRUE) {
+                $errorMessage .= "Error in file $uploadedFileName: " . $conn->error . "<br>";
+            } else {
+                $successMessage .= "File $uploadedFileName uploaded successfully!<br>";
+            }
+        } else {
+            $errorMessage .= "Sorry, there was an error uploading $uploadedFileName.<br>";
+        }
+    } else {
+        $errorMessage .= "File format not allowed for $uploadedFileName.<br>";
+    }
+}
+
+if (!empty($errorMessage)) {
+	$errorMessage = "Errors occurred:<br>" . $errorMessage;
+} else {
+	$errorMessage = ""; 
+}
+} else {
+$errorMessage = "No files were uploaded."; 
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Result</title>
+    
+</head>
+<body>
+    <div>
+        <?php if (isset($successMessage)) : ?>
+            <p><?php echo $successMessage; ?></p>
+            <a href="contact.html" class="btn btn-danger ml-3">Return to Contact</a>
+        <?php endif; ?>
+        
+        
+        <?php if (!empty($errorMessage)) : ?>
+            <p><?php echo $errorMessage; ?></p>
+        <?php endif; ?>
+    </div>
+</body>
+
+<footer class="site-footer v2">
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-lg-4">
