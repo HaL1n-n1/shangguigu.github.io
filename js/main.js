@@ -12,11 +12,13 @@ jQuery(document).ready(function($) {
 
     // Function to clone the site navigation for mobile view
     var siteMenuClone = function() {
+        // Clone the site navigation for each element with class 'js-clone-nav'
         $('.js-clone-nav').each(function() {
             var $this = $(this);
             $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body');
         });
 
+        // Set up collapsible menus for mobile view
         setTimeout(function() {
             var counter = 0;
             $('.site-mobile-menu .has-children').each(function() {
@@ -34,6 +36,7 @@ jQuery(document).ready(function($) {
             });
         }, 1000);
 
+        // Handle click on collapsible menu arrow
         $('body').on('click', '.arrow-collapse', function(e) {
             var $this = $(this);
             if ($this.closest('li').find('.collapse').hasClass('show')) {
@@ -44,6 +47,7 @@ jQuery(document).ready(function($) {
             e.preventDefault();
         });
 
+        // Adjust mobile menu when window is resized
         $(window).resize(function() {
             var $this = $(this),
                 w = $this.width();
@@ -55,6 +59,7 @@ jQuery(document).ready(function($) {
             }
         });
 
+        // Toggle mobile menu on click
         $('body').on('click', '.js-menu-toggle', function(e) {
             var $this = $(this);
             e.preventDefault();
@@ -66,7 +71,7 @@ jQuery(document).ready(function($) {
                 $('body').addClass('offcanvas-menu');
                 $this.addClass('active');
             }
-        })
+        });
 
         // Click outside offcanvas to close it
         $(document).mouseup(function(e) {
@@ -114,6 +119,7 @@ jQuery(document).ready(function($) {
 
     // Main site carousel functionality
     var siteCarousel = function() {
+        // Non-looping carousel
         if ($('.nonloop-block-13').length > 0) {
             $('.nonloop-block-13').owlCarousel({
                 center: false,
@@ -147,6 +153,7 @@ jQuery(document).ready(function($) {
             });
         }
 
+        // Single item carousel
         $('.slide-one-item').owlCarousel({
             center: false,
             items: 1,
@@ -161,6 +168,7 @@ jQuery(document).ready(function($) {
             navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
         });
 
+        // Carousel with all items visible
         if ($('.owl-all').length > 0) {
             $('.owl-all').owlCarousel({
                 center: false,
@@ -208,7 +216,7 @@ jQuery(document).ready(function($) {
 
     // Countdown functionality
     var siteCountDown = function() {
-        $('#date-countdown').countdown('2020/10/10', function(event) {
+        $('#date-countdown').countdown('2024/2/29', function(event) {
             var $this = $(this).html(event.strftime(''
                 + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
                 + '<span class="countdown-block"><span class="label">%d</span> days </span>'
@@ -235,6 +243,7 @@ jQuery(document).ready(function($) {
     var OnePageNavigation = function() {
         var navToggler = $('.site-menu-toggle');
 
+        // Smooth scrolling for navigation links
         $("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a[href^='#']", function(e) {
             e.preventDefault();
 
@@ -277,7 +286,7 @@ jQuery(document).ready(function($) {
                     }, 7000);
                 });
             }
-        }, { offset: '95%' });
+        }, { offset: '94%' });
     };
     counter();
 

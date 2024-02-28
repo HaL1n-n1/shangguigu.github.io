@@ -1677,3 +1677,60 @@ h1, h2, h3, h4, h5,
 .form textarea:valid {
   border-color: #28a745;
 }
+
+
+
+
+
+
+
+
+/* Apply Now 部分的样式 */
+
+.job-application-form {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.job-application-form h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.job-application-form input[type="text"],
+.job-application-form input[type="email"],
+.job-application-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.job-application-form input[type="file"] {
+  margin-bottom: 15px;
+}
+
+.job-application-form textarea {
+  height: 120px;
+}
+
+.job-application-form input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.job-application-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
