@@ -70,9 +70,9 @@
           <div class="col-lg-4">
             <nav class="site-navigation text-left mr-auto " role="navigation">
               <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                <li><a href="about.html" class="nav-link">About</a></li>
-              
+              <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="course.html" class="nav-link">Course</a></li>
               </ul>
             </nav>
           </div>
