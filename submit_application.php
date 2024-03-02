@@ -241,7 +241,7 @@ $errorMessage = "No files were uploaded.";
         <div class="row justify-content-center text-center copyright">
           <div class="col-md-8">
 
-            <p class="mb-0"> © Copyright shangguigu. &copy;<script>document.write(new Date().getFullYear());</script> &mdash; </a>
+            <p class="mb-0"> © Copyright shangguigu. &copy;<script>document.write(new Date().getFullYear());</script> &mdash; </a>Luca Chen Jiehao
             </p>
           </div>
         </div>
